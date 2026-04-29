@@ -105,48 +105,44 @@ else:
 
 # ============ UI ENDPOINTS ============
 
-@app.get("/", tags=["UI"], response_class=HTMLResponse)
+@app.get("/", tags=["UI"])
 async def root(request: Request):
     """Home page"""
     try:
-        response = templates.TemplateResponse("index.html", {"request": request})
-        return response
+        return templates.TemplateResponse("index.html", {"request": request})
     except Exception as e:
         logger.error(f"Error rendering index.html: {str(e)}", exc_info=True)
-        return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
+        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>")
 
 
-@app.get("/ui/query", tags=["UI"], response_class=HTMLResponse)
+@app.get("/ui/query", tags=["UI"])
 async def query_page(request: Request):
     """Query interface page"""
     try:
-        response = templates.TemplateResponse("query.html", {"request": request})
-        return response
+        return templates.TemplateResponse("query.html", {"request": request})
     except Exception as e:
         logger.error(f"Error rendering query.html: {str(e)}", exc_info=True)
-        return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
+        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>")
 
 
-@app.get("/ui/dashboard", tags=["UI"], response_class=HTMLResponse)
+@app.get("/ui/dashboard", tags=["UI"])
 async def dashboard_page(request: Request):
     """Dashboard page"""
     try:
-        response = templates.TemplateResponse("dashboard.html", {"request": request})
-        return response
+        return templates.TemplateResponse("dashboard.html", {"request": request})
     except Exception as e:
         logger.error(f"Error rendering dashboard.html: {str(e)}", exc_info=True)
-        return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
+        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>")
 
 
-@app.get("/ui/documents", tags=["UI"], response_class=HTMLResponse)
+@app.get("/ui/documents", tags=["UI"])
 async def documents_page(request: Request):
     """Documents management page"""
     try:
-        response = templates.TemplateResponse("documents.html", {"request": request})
-        return response
+        return templates.TemplateResponse("documents.html", {"request": request})
     except Exception as e:
         logger.error(f"Error rendering documents.html: {str(e)}", exc_info=True)
-        return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
+        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>")
 
 
 # ============ SYSTEM ENDPOINTS ============
