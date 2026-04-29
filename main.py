@@ -8,6 +8,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 from contextlib import asynccontextmanager
 from datetime import datetime
 from pathlib import Path
@@ -104,44 +105,44 @@ else:
 
 # ============ UI ENDPOINTS ============
 
-@app.get("/", tags=["UI"])
+@app.get("/", tags=["UI"], response_class=HTMLResponse)
 async def root(request: Request):
     """Home page"""
     try:
         return templates.TemplateResponse(name="index.html", context={"request": request})
     except Exception as e:
         logger.error(f"Error rendering index.html: {str(e)}", exc_info=True)
-        return {"error": str(e)}
+        return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
 
 
-@app.get("/ui/query", tags=["UI"])
+@app.get("/ui/query", tags=["UI"], response_class=HTMLResponse)
 async def query_page(request: Request):
     """Query interface page"""
     try:
         return templates.TemplateResponse(name="query.html", context={"request": request})
     except Exception as e:
         logger.error(f"Error rendering query.html: {str(e)}", exc_info=True)
-        return {"error": str(e)}
+        return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
 
 
-@app.get("/ui/dashboard", tags=["UI"])
+@app.get("/ui/dashboard", tags=["UI"], response_class=HTMLResponse)
 async def dashboard_page(request: Request):
     """Dashboard page"""
     try:
         return templates.TemplateResponse(name="dashboard.html", context={"request": request})
     except Exception as e:
         logger.error(f"Error rendering dashboard.html: {str(e)}", exc_info=True)
-        return {"error": str(e)}
+        return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
 
 
-@app.get("/ui/documents", tags=["UI"])
+@app.get("/ui/documents", tags=["UI"], response_class=HTMLResponse)
 async def documents_page(request: Request):
     """Documents management page"""
     try:
         return templates.TemplateResponse(name="documents.html", context={"request": request})
     except Exception as e:
         logger.error(f"Error rendering documents.html: {str(e)}", exc_info=True)
-        return {"error": str(e)}
+        return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
 
 
 # ============ SYSTEM ENDPOINTS ============
