@@ -109,7 +109,8 @@ else:
 async def root(request: Request):
     """Home page"""
     try:
-        return templates.TemplateResponse("index.html", {"request": request})
+        response = templates.TemplateResponse("index.html", {"request": request})
+        return response
     except Exception as e:
         logger.error(f"Error rendering index.html: {str(e)}", exc_info=True)
         return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
@@ -119,7 +120,8 @@ async def root(request: Request):
 async def query_page(request: Request):
     """Query interface page"""
     try:
-        return templates.TemplateResponse("query.html", {"request": request})
+        response = templates.TemplateResponse("query.html", {"request": request})
+        return response
     except Exception as e:
         logger.error(f"Error rendering query.html: {str(e)}", exc_info=True)
         return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
@@ -129,7 +131,8 @@ async def query_page(request: Request):
 async def dashboard_page(request: Request):
     """Dashboard page"""
     try:
-        return templates.TemplateResponse("dashboard.html", {"request": request})
+        response = templates.TemplateResponse("dashboard.html", {"request": request})
+        return response
     except Exception as e:
         logger.error(f"Error rendering dashboard.html: {str(e)}", exc_info=True)
         return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
@@ -139,7 +142,8 @@ async def dashboard_page(request: Request):
 async def documents_page(request: Request):
     """Documents management page"""
     try:
-        return templates.TemplateResponse("documents.html", {"request": request})
+        response = templates.TemplateResponse("documents.html", {"request": request})
+        return response
     except Exception as e:
         logger.error(f"Error rendering documents.html: {str(e)}", exc_info=True)
         return f"<h1>Error Loading Page</h1><p>{str(e)}</p>"
