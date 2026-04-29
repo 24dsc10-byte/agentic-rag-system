@@ -112,7 +112,7 @@ async def root(request: Request):
         return templates.TemplateResponse("index.html", {"request": request})
     except Exception as e:
         logger.error(f"Error rendering index.html: {str(e)}", exc_info=True)
-        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>")
+        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>", status_code=500)
 
 
 @app.get("/ui/query", tags=["UI"])
@@ -122,7 +122,7 @@ async def query_page(request: Request):
         return templates.TemplateResponse("query.html", {"request": request})
     except Exception as e:
         logger.error(f"Error rendering query.html: {str(e)}", exc_info=True)
-        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>")
+        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>", status_code=500)
 
 
 @app.get("/ui/dashboard", tags=["UI"])
@@ -132,7 +132,7 @@ async def dashboard_page(request: Request):
         return templates.TemplateResponse("dashboard.html", {"request": request})
     except Exception as e:
         logger.error(f"Error rendering dashboard.html: {str(e)}", exc_info=True)
-        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>")
+        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>", status_code=500)
 
 
 @app.get("/ui/documents", tags=["UI"])
@@ -142,7 +142,7 @@ async def documents_page(request: Request):
         return templates.TemplateResponse("documents.html", {"request": request})
     except Exception as e:
         logger.error(f"Error rendering documents.html: {str(e)}", exc_info=True)
-        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>")
+        return HTMLResponse(f"<h1>Error Loading Page</h1><p>{str(e)}</p>", status_code=500)
 
 
 # ============ SYSTEM ENDPOINTS ============
